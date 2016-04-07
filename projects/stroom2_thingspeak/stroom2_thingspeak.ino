@@ -44,7 +44,7 @@ void loop()
     String postStr = apiKey;
     postStr += "&field1=";
     postStr += String(sensorValue);
-      postStr += "&field2=";
+    postStr += "&field2=";
     postStr += String(buttonValue);
     postStr += "\r\n\r\n";
 
