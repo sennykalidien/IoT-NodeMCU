@@ -5,11 +5,13 @@ int sensorPin = A0; // select the input pin for the potentiometer
 int buttonPin = D0; // select the input pin for the potentiometer
 int ledPin = 13; // select the pin for the LED
 int sensorValue = 0; // variable to store the value coming from the sensor
+int buttonValue = 0;
+
 EIoTCloudRestApi eiotcloud;
 
 //setuop the node
 void setup()
-
+{
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
   eiotcloud.begin();
@@ -29,5 +31,5 @@ void loop()
 
   //send the sensor value to the eito cloud
   eiotcloud.sendParameter(EIOT_CLOUD_INSTANCE_PARAM_ID, sensorValue);
-  eiotcloud.sendParameter(EIOT_CLOUD_INSTANCE_PARAM_ID, buttonValue);
+  eiotcloud.sendParameter(EIOT_CLOUD_INSTANCE_PARAM_IDD, buttonValue);
 }
