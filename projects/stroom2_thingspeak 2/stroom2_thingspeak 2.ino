@@ -5,8 +5,8 @@
 // replace with your channel’s thingspeak API key,
 String apiKey = "QAAJBUFFNSKXB349";
 
-const char* ssid = "E-space_nomap";
-const char* password = "Joshua1999Home!@";
+const char* ssid = "";
+const char* password = "";
 //const char* ssid = "Lisa";
 //const char* password = "sayLISA1993";
 const char* server = "api.thingspeak.com";
@@ -19,7 +19,7 @@ int buttonValue = 0;
 
 WiFiClient client;
 //AltSoftSerial altSerial;
-void setup () 
+void setup ()
 {
   pinMode (ledPin, OUTPUT);
   Serial.begin (9600);

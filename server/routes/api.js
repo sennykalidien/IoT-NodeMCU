@@ -23,7 +23,8 @@ router.post('/', function(req, res) {
 
         obj.push(newdata);
         jsonfile.writeFileSync(file, obj);
-        res.redirect('/');
+        res.send('hoi');
+        // res.redirect('/');
     });
 });
 
