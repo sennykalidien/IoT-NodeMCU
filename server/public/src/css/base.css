@@ -21,3 +21,14 @@ video {
 .disabled {
     display: none !important;
 }
+.status{
+  height: 100px;
+  width: 100px;
+}
+
+.true{
+  background: rgb(70, 198, 43);
+}
+.false{
+  background: rgb(255, 3, 3);
+}
