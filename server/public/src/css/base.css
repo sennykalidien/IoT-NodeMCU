@@ -1,27 +1,23 @@
 body {
     width: 100%;
+    font-family: helvetica, sans-serif;
 }
-
 main {
     width: 100%;
     min-width: 13em;
     margin: 0 auto 0 auto;
 }
 
-img {
-    width: 100%;
-}
-
-video {
-    width: 100%;
-    height: auto;
-}
 
 .none,
 .disabled {
     display: none !important;
 }
+section {
+  display: inline-block;
+}
 .status{
+  display: inline-block;
   height: 100px;
   width: 100px;
 }

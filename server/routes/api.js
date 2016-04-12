@@ -20,7 +20,7 @@ router.post('/', function(req, res) {
                 senny: senny,
                 matthias: matthias
             };
-            
+
         obj.push(newdata);
         jsonfile.writeFileSync(file, obj);
         res.redirect('/');

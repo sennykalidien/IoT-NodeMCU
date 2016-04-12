@@ -1,25 +1,32 @@
 <h1>Vissualisation</h1>
-
-
 <section>
-  <h2>Lisa</h2>
-  <div class="{{data.lisa}} status"></div>
+    <h2>Lisa</h2>
+    <div class="{{data.lisa}} status"></div>
 </section>
 
 <section>
-  <h2>Senny</h2>
-  <div class="{{data.senny}} status"></div>
+    <h2>Senny</h2>
+    <div class="{{data.senny}} status"></div>
 </section>
 <section>
-  <h2>Matthias</h2>
-  <div class="{{data.matthias}} status"></div>
+    <h2>Matthias</h2>
+    <div class="{{data.matthias}} status"></div>
 </section>
 
 <form action="/api" method="post">
-    <input type="text" name="lisa" placeholder="lisa">
-    <input type="text" name="senny" placeholder="senny">
-    <input type="text" name="matthias" placeholder="matthias">
+    <select name="lisa">
+      <option value="true">ON</option>
+      <option value="false">OFF</option>
+    </select>
+    <select name="senny">
+        <option value="true">ON</option>
+        <option value="false">OFF</option>
+    </select>
+    <select name="matthias">
+        <option value="true">ON</option>
+        <option value="false">OFF</option>
+    </select>
     <button type="submit">
-        POST
+        Update
     </button>
 </form>
