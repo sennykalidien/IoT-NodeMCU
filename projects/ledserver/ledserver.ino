@@ -5,7 +5,7 @@ const char* ssid     = "Lisa";
 const char* password = "sayLISA1993";
 
 const char* host     = "iot.dolstra.me"; // Your domain  
-String path          = "/api/status/lisa";  
+String path          = "/api/status/matthias";  
 const int httpPort   = 80;
 const int ledPin     = D0;
 const int ButtonPin  = D1;
