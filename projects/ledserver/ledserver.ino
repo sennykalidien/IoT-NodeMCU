@@ -1,63 +1,89 @@
 #include <ESP8266WiFi.h>
+#include <ArduinoJson.h>
 
-  // replace with your channel’s thingspeak API key,
-String apiKey = "QAAJBUFFNSKXB349";
-const char* ssid = "";
-const char* password = "";
-const char* server = "iot.dolstra.me";
+const char* ssid     = "hio";  
+const char* password = "hio!";
 
-int ButtonPin = D1; // select the input pin for the potentiometer
-int ledPin = D0; // select the pin for the LED
-int buttonValue = 0;
+const char* host     = "iot.dolstra.me"; // Your domain  
+String path          = "/api/status/matthias";  
+const int ledPin        = D0;
 
-WiFiClient client;
-
-void setup()
-{
-  pinMode(ledPin, OUTPUT);
+void setup() {  
+  
+  pinMode(ledPin, OUTPUT); 
+  pinMode(ledPin, HIGH);
   Serial.begin(9600);
 
-  WiFi.begin(ssid, password);
-
-  Serial.println();
+  delay(10);
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
+  WiFi.begin(ssid, password);
+  int wifi_ctr = 0;
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
 
-  Serial.println("");
-  Serial.println("WiFi connected");
+  Serial.println("WiFi connected");  
+  Serial.println("IP address: " + WiFi.localIP());
 }
 
-void loop()
-{
-  buttonValue = digitalRead(ButtonPin);
-  digitalWrite(ledPin, HIGH);
-  
-  if (client.connect(server, 80)) {
-    String postStr = "&matthias=";
-    postStr += String(buttonValue);
-    postStr += "\r\n\r\n";
-
-    client.print("POST /update HTTP/1.1\n");
-    client.print("Host: iot.dolstra.me\n");
-    client.print("Connection: close\n");
-    client.print("Content-Type: application/x-www-form-urlencoded\n");
-    client.print("Content-Length: ");
-    client.print(postStr.length());
-    client.print("\n\n");
-    client.print(postStr);
-
-    Serial.print(buttonValue, DEC);
-    Serial.println(" send to iot.dolstra.me");
+void loop() {  
+  Serial.print("connecting to ");
+  Serial.println(host);
+  WiFiClient client;
+  const int httpPort = 80;
+  if (!client.connect(host, httpPort)) {
+    Serial.println("connection failed");
+    return;
   }
 
-  client.stop();
+  client.print(String("GET ") + path + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" + 
+               "Connection: keep-alive\r\n\r\n");
 
-  Serial.println("Waiting…");
-  // thingspeak needs minimum 15 sec delay between updates
-  delay(2000);
+  delay(500); // wait for server to respond
+
+  // read response
+  String section="header";
+  while(client.available()){
+    String line = client.readStringUntil('\r');
+    // Serial.print(line);
+    // we’ll parse the HTML body here
+    if (section=="header") { // headers..
+      Serial.print(".");
+      if (line=="\n") { // skips the empty space at the beginning 
+        section="json";
+      }
+    }
+    else if (section=="json") {  // print the good stuff
+      section="ignore";
+      String result = line.substring(1);
+
+      // Parse JSON
+      int size = result.length() + 1;
+      char json[size];
+      result.toCharArray(json, size);
+      StaticJsonBuffer<200> jsonBuffer;
+      JsonObject& json_parsed = jsonBuffer.parseObject(json);
+      if (!json_parsed.success())
+      {
+        Serial.println("parseObject() failed");
+        return;
+      }
+
+      // Make the decision to turn off or on the LED
+      if (strcmp(json_parsed["light"], "true") == 0) {
+        digitalWrite(ledPin, HIGH); 
+        Serial.println("LED ON");
+      }
+      else {
+        digitalWrite(ledPin, LOW);
+        Serial.println("led off");
+      }
+    }
+  }
+  Serial.print("closing connection. ");
 }
+
