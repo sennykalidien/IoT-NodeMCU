@@ -7,15 +7,14 @@ main {
     min-width: 13em;
     margin: 0 auto 0 auto;
 }
-
-
 .none,
 .disabled {
     display: none !important;
 }
-section {
+.leds{
   display: inline-block;
 }
+
 .status{
   display: inline-block;
   height: 100px;

@@ -10,22 +10,30 @@ router.post('/', function(req, res) {
         now = moment().format('YYYY-MM-DD HH:mm:ss');
 
     jsonfile.readFile(file, function(err, obj) {
-        var lastObject = getLastObject(obj);
-
-        console.log(req.body);
-        var lisa = req.body.lisa || lastObject.lisa,
-            senny = req.body.senny || lastObject.senny,
-            matthias = req.body.matthias || lastObject.matthias,
+        var lastObject = getLastObject(obj),
             newdata = {
                 time: now,
-                lisa: lisa,
-                senny: senny,
-                matthias: matthias
+                lisa: {
+                  led: req.body.lisa || lastObject.lisa,
+                  value1: req.body.lisaValue1,
+                  value2: req.body.lisaValue2,
+                  value3: req.body.lisaValue3
+                },
+                senny: {
+                  led: req.body.senny || lastObject.senny,
+                  value1: req.body.sennyValue1,
+                  value2: req.body.sennyValue2,
+                  value3: req.body.sennyValue3
+                },
+                matthias: {
+                  led: req.body.matthias || lastObject.matthias,
+                  value1: req.body.matthiasValue1,
+                  value2: req.body.matthiasValue2,
+                  value3: req.body.matthiasValue3
+                }
             };
-
         obj.push(newdata);
         jsonfile.writeFileSync(file, obj);
-        // res.send('hoi');
         res.redirect('/');
     });
 });
@@ -35,7 +43,7 @@ router.get('/status/:name', function(req, res) {
     var file = 'resources/data.json';
 
     jsonfile.readFile(file, function(err, obj) {
-        res.send('{"light":"' + getLastObject(obj)[name]+ '"}');
+        res.send('{"light":"' + getLastObject(obj)[name].led + '"}');
     });
 });
 
