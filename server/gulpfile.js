@@ -56,7 +56,8 @@ gulp.task('styles', function(cb) {
     cssnext()
   ];
   return gulp.src([
-      './public/src/css/base.css'
+      './public/src/css/base.css',
+      './public/src/css/c3.min.css'
     ])
     .pipe(concat('style.css'))
     .pipe(postcss(processors))
