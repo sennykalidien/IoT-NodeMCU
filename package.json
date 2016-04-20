@@ -1,7 +1,7 @@
- {
-  "name": "portfolio-matthias-dolstra",
+{
+  "name": "iotfinal-melvin",
   "version": "0.0.1",
-  "description": "My portfolio webiste in node.js",
+  "description": "Measuring my sleep",
   "main": "app.js",
   "private": true,
   "scripts": {
@@ -10,9 +10,9 @@
   "repository": {
     "type": "git"
   },
-  "author": "Matthias Dolstra",
+  "author": "Melvin Reijnoudt",
   "license": "ISC",
-  "homepage": "https://dolstra.me",
+  "homepage": "http://iotfinal.mreijnoudt.com",
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
@@ -31,6 +31,7 @@
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.1.0",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.3",
     "gulp-concat": "^2.6.0",

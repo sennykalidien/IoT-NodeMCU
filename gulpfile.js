@@ -5,62 +5,17 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
   cssnano = require('gulp-cssnano'),
-  postcss = require('gulp-postcss'),
-  autoprefixer = require('autoprefixer'),
-  svgmin = require('gulp-svgmin'),
-  cssnext = require('cssnext'),
-  mqpacker = require('css-mqpacker'),
-  csswring = require('csswring'),
-  responsive = require('gulp-responsive'),
-  imgConfig = [{
-    width: 1500,
-    rename: {
-      suffix: '-1500'
-    }
-  }, {
-    width: 1280,
-    rename: {
-      suffix: '-1280'
-    }
-  }, {
-    width: 960,
-    rename: {
-      suffix: '-960'
-    }
-  }, {
-    width: 640,
-    rename: {
-      suffix: '-640'
-    }
-  }, {
-    width: 480,
-    rename: {
-      suffix: '-480'
-    }
-  }];
-
-gulp.task('icons', function() {
-  return gulp.src('public/src/img/**/*.svg')
-    .pipe(svgmin())
-    .pipe(gulp.dest('public/dist/img'));
-});
+  autoprefixer = require('gulp-autoprefixer')
 
 // Styles
 gulp.task('styles', function(cb) {
-  var processors = [
-    autoprefixer({
-      browsers: ['> 10%', 'IE 11']
-    }),
-    //        mqpacker,
-    csswring,
-    cssnext()
-  ];
   return gulp.src([
-      './public/src/css/base.css',
+      './public/src/css/reset.css',
+      './public/src/css/main.css',
       './public/src/css/c3.min.css'
     ])
+    .pipe(autoprefixer())
     .pipe(concat('style.css'))
-    .pipe(postcss(processors))
     .pipe(cssnano())
     .pipe(gulp.dest('./public/dist/css/'))
     .pipe(notify({

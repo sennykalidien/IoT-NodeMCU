@@ -21,9 +21,12 @@ main {
   width: 100px;
 }
 
-.true{
-  background: rgb(70, 198, 43);
-}
-.false{
+.red{
   background: rgb(255, 3, 3);
+}
+.orange {
+  background: rgb(255,127,80);
+}
+.green{
+  background: rgb(70, 198, 43);
 }

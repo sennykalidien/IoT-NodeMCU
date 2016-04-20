@@ -1,0 +1,1 @@
+"use strict";d3.json("/api/data",function(t,a){var e=[],s=["sensor"];a.forEach(function(t,a){e.push(t.time),s.push(t.input.distance)});c3.generate({data:{columns:[s]},axis:{x:{type:"category",categories:e}}})});
