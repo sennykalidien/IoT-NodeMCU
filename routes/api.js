@@ -9,32 +9,33 @@ router.post('/', function(req, res) {
     var file = 'resources/data.json',
         now = moment().format('YYYY-MM-DD HH:mm:ss');
 
-    /* THE LOGIC (NOT THE RAPPER) */
-    var minimumRange = 50;
-    var maximumRange = 100;
-
-    var distance = req.body.input || lastObject.input.distance;
-
-    if (distance <= minimumRange) {
-        var ledValue = "green";
-    } else if (distance => maximumRange) {
-        var ledValue = "red";
-    } else {
-        var ledValue = "yellow";
-    }
-
     jsonfile.readFile(file, function(err, obj) {
         var lastObject = getLastObject(obj),
-            newdata = {
-                time: now,
-                input: {
-                    //distance: req.body.input || lastObject.input.distance
-                    distance: distance
-                },
-                output: {
-                    led: ledValue || req.body.output || lastObject.input.led
-                }
-            };
+
+        /* THE LOGIC */
+        var minimumRange = 50;
+        var maximumRange = 100;
+
+        var distance = req.body.input || lastObject.input.distance;
+
+        if (distance <= minimumRange) {
+            var ledValue = "green";
+        } else if (distance => maximumRange) {
+            var ledValue = "red";
+        } else {
+            var ledValue = "yellow";
+        }
+
+        var newdata = {
+            time: now,
+            input: {
+                //distance: req.body.input || lastObject.input.distance
+                distance: distance
+            },
+            output: {
+                led: ledValue || req.body.output || lastObject.input.led
+            }
+        };
         console.log(req.body);
         obj.push(newdata);
         jsonfile.writeFileSync(file, obj);
