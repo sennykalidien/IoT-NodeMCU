@@ -40,7 +40,7 @@ section {
 }
 
 .chart {
-    flex: 1 0 100%;
+    flex: 0 1 100%;
 }
 
 .chart h2 {
@@ -49,7 +49,7 @@ section {
 
 .leds {
     display: inline-block;
-    flex: 0 1 21em;
+    flex: 0 1 100%;
     background: #f9f9f9;
     padding: 1em;
 }
@@ -71,7 +71,16 @@ section {
 }
 
 .sensors {
-    flex: 0 1 20em;
+    flex: 0 1 100%;
     background: #f9f9f9;
     padding: 1em;
+}
+
+@media (min-width: 400px) {
+    .leds {
+        flex: 0 1 21em;
+    }
+    .sensors {
+        flex: 0 1 21em;
+    }
 }
