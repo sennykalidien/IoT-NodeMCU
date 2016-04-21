@@ -63,8 +63,8 @@ section {
 .leds .red {
     background: rgb(255, 3, 3);
 }
-.leds .orange {
-    background: rgb(255, 127, 80);
+.leds .yellow {
+    background: rgb(241, 196, 15);
 }
 .leds .green {
     background: rgb(70, 198, 43);
