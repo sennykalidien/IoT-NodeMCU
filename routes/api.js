@@ -13,17 +13,17 @@ router.post('/', function(req, res) {
         var lastObject = getLastObject(obj);
 
         /* THE LOGIC */
-        var minimumRange = 50;
-        var maximumRange = 100;
+        // var minimumRange = 50;
+        // var maximumRange = 100;
 
         var distance = req.body.input || lastObject.input.distance;
 
-        if (distance < minimumRange) {
-            var ledValue = "green";
-        } else if (distance => minimumRange && distance < maximumRange) {
-            var ledValue = "yellow";
-        } else {
+        if (distance >= 100) {
             var ledValue = "red";
+        } else if (distance > 49 && distance < 101) {
+            var ledValue = "orange";
+        } else {
+            var ledValue = "green";
         }
 
         var newdata = {
