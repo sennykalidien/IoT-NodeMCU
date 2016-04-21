@@ -1,7 +1,7 @@
 {
   "name": "iotfinal-senny",
   "version": "0.0.1",
-  "description": "Be productive at doing your homework",
+  "description": "Is he behind his computer?",
   "main": "app.js",
   "private": true,
   "scripts": {
