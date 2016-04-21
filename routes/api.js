@@ -18,12 +18,12 @@ router.post('/', function(req, res) {
 
         var distance = req.body.input || lastObject.input.distance;
 
-        if (distance <= minimumRange) {
+        if (distance < minimumRange) {
             var ledValue = "green";
-        } else if (distance => maximumRange) {
-            var ledValue = "red";
-        } else {
+        } else if (distance => minimumRange && distance < maximumRange) {
             var ledValue = "yellow";
+        } else {
+            var ledValue = "red";
         }
 
         var newdata = {
