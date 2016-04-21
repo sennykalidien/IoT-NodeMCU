@@ -31,7 +31,7 @@ router.get('/status/input', function(req, res) {
     var file = 'resources/data.json';
 
     jsonfile.readFile(file, function(err, obj) {
-        res.send('{"led":' + getLastObject(obj).input.distance + '}');
+        res.send('{"distance":' + getLastObject(obj).input.distance + '}');
     });
 });
 
@@ -40,7 +40,7 @@ router.get('/status/output', function(req, res) {
     var file = 'resources/data.json';
 
     jsonfile.readFile(file, function(err, obj) {
-        res.send('{"value":"' + getLastObject(obj).output.led + '"}');
+        res.send('{"led":"' + getLastObject(obj).output.led + '"}');
     });
 });
 
