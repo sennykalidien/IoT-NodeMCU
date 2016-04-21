@@ -1,6 +1,6 @@
 var getLastObject = function (array) {
-  var arrayLenght = array.length - 1,
-      arrayLast = array[arrayLenght];
+  var arrayLength = array.length - 1,
+      arrayLast = array[arrayLength];
       return arrayLast;
 };
 
