@@ -118,13 +118,6 @@ button {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
 }
 
-svg {
-    height: 1em;
-    width: 1em;
-    margin: 0 0.2em 0 0;
-    color: #fff;
-}
-
 :disabled,
 [disabled],
 [aria-disabled="true"] {
