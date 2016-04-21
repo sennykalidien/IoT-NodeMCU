@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
                     distance: distance
                 },
                 output: {
-                    led: ledValue || req.body.output || lastObject.input.led;
+                    led: ledValue || req.body.output || lastObject.input.led
                 }
             };
         console.log(req.body);
