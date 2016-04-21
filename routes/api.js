@@ -10,7 +10,7 @@ router.post('/', function(req, res) {
         now = moment().format('YYYY-MM-DD HH:mm:ss');
 
     jsonfile.readFile(file, function(err, obj) {
-        var lastObject = getLastObject(obj),
+        var lastObject = getLastObject(obj);
 
         /* THE LOGIC */
         var minimumRange = 50;
