@@ -5,6 +5,7 @@ d3.json("/api/data", function(error, data) {
     data.forEach(function(element, index) {
         time.push(element.time);
         sensor.push(element.input.distance);
+        console.log(sensor);
     });
 
     var chart = c3.generate({

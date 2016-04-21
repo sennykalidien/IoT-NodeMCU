@@ -1,27 +1,28 @@
-<h1>Visualisation</h1>
+<section class="chart">
+    <h2>Chart</h2>
+    <div id="chart"></div>
+</section>
+
 <section class="leds">
     <h2>Status</h2>
     <div class="{{data.output.led}} status"></div>
+    <form action="/api" method="post">
+        <select name="output">
+            <option value="red">Time for a break!</option>
+            <option value="orange">Almost time for a break...</option>
+            <option value="green">Let's be productive!</option>
+        </select>
+        <button type="submit">
+            Update
+        </button>
+    </form>
 </section>
 
-<form action="/api" method="post">
-    <select name="output">
-      <option value="red">Neem een break!</option>
-      <option value="orange">Bijna tijd voor een break...</option>
-      <option value="green">Je hebt nog tijd om productief te zijn!</option>
-    </select>
-    <button type="submit">
-        Update
-    </button>
-</form>
-
 <section class="sensors">
-    <h1>Grafiek</h1>
-    <div id="chart"></div>
-    <small>{{data.time}}</small>
     <section>
-      <h2>Status</h2>
-      <p>led: {{data.output.led}}</p>
-      <p>Distance: {{data.input.distance}}  C&ordm;</p>
+        <h2>Status ESP</h2>
+        <p>Time updated: {{data.time}}</p>
+        <p>Color led: {{data.output.led}}</p>
+        <p>Distance sensor: {{data.input.distance}} CM</p>
     </section>
 </section>
