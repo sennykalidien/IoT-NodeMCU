@@ -1,5 +1,17 @@
+function outputUpdateChild(vol) {
+    document.querySelector('#child-out').value = vol;
+}
+
+function outputUpdateAdult(vol) {
+    document.querySelector('#adult-out').value = vol;
+}
+
+function outputUpdateGrandpa(vol) {
+    document.querySelector('#grandpa-out').value = vol;
+}
+
 d3.json("/api/data", function(error, data) {
-    var time = [];
+    var time = ['times'];
     var sensor = ['Distance from laptop to me'];
 
     data.forEach(function(element, index) {
@@ -17,17 +29,21 @@ d3.json("/api/data", function(error, data) {
 
     var chart = c3.generate({
         data: {
+            x: 'times',
+            xFormat: '%Y-%m-%d %H:%M:%S',
             columns: [
-                newArr
-            ],
-            xFormat: '%H:%M:%S'
+                newArr,
+                time
+            ]
         },
         axis: {
             x: {
-                type: 'category',
-                categories: time
+                type: 'timeseries',
+                categories: time,
+                tick: {
+                    format: '%H:%M:%S'
+                }
             }
-
         }
     });
 });

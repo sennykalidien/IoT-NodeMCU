@@ -13,14 +13,16 @@ router.post('/', function(req, res) {
         var lastObject = getLastObject(obj);
 
         /* THE LOGIC */
-        var distance = req.body.input || lastObject.input.distance;
+        var distance = req.body.input || lastObject.input.distance,
+        settingsRed = req.body.red || lastObject.settings.red,
+        settingsGreen = req.body.green || lastObject.settings.green;
 
-        if (distance >= 100) {
-            var ledValue = "red";
-        } else if (distance > 49 && distance < 101) {
-            var ledValue = "yellow";
-        } else {
+        if (distance >= settingsGreen) {
             var ledValue = "green";
+        } else if (distance > settingsRed && distance < settingsGreen) {
+            var ledValue = "yellow";
+        } else if (distance <= settingsRed) {
+            var ledValue = "red";
         }
 
         var newdata = {
@@ -30,6 +32,10 @@ router.post('/', function(req, res) {
             },
             output: {
                 led: req.body.output || ledValue
+            },
+            settings: {
+                red: settingsRed,
+                green: settingsGreen
             }
         };
         console.log(req.body);

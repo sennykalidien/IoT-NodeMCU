@@ -7,14 +7,61 @@
     <h2>Status</h2>
     <div class="{{data.output.led}} status"></div>
     <form action="/api" method="post">
-        <select name="output">
+        <!-- <select name="output">
             <option value="red">Time for a break!</option>
             <option value="yellow">Almost time for a break...</option>
             <option value="green">Let's be productive!</option>
-        </select>
-        <button type="submit">
-            Update
-        </button>
+        </select> -->
+
+        <button name="output" value="red">Time for a break!</button>
+        <button name="output" value="yellow">Almost time for a break...</button>
+        <button name="output" value="green">Let's be productive!</button>
+    </form>
+
+    <form action="/api" method="post">
+        <!-- <fieldset>
+            <label>Red</label>
+            <select name="red">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Yellow</label>
+            <select name="yellow">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Green</label>
+            <select name="green">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+            </select>
+        </fieldset> -->
+
+        <label for="child">Maximale afstand dat het gevaarlijk wordt voor je ogen</label><br />
+        <input name="red" type="range" min="0" max="70" value="{{data.settings.red}}" oninput="outputUpdateChild(value)" id="child">
+        <output for="child" id="child-out">{{data.settings.red}}</output><br />
+
+        <label for="adult">Minimale afstand dat het prima is voor je ogen</label><br />
+        <input name="green" type="range" min="80" max="200" value="{{data.settings.green}}" oninput="outputUpdateAdult(value)" id="adult">
+        <output for="adult" id="adult-out">{{data.settings.green}}</output><br />
+
+        <!--
+        <label for="grandpa">Grandpa Modus</label><br />
+        <input name="green" type="range" min="100" max="200" value="100" oninput="outputUpdateGrandpa(value)" id="grandpa">
+        <output for="grandpa" id="grandpa-out">20</output>
+        <br /><br />
+        -->
+        <button type="submit">Update</button>
     </form>
 </section>
 
