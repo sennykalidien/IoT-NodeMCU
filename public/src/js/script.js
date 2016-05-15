@@ -23,27 +23,28 @@ d3.json("/api/data", function(error, data) {
         settingsGreen.push(element.settings.green);
     });
 
-    var showResults = 30;
-    var newArr = sensor.slice(Math.max(sensor.length - showResults, 1));
-    var text = 'Distance from object in sensor';
+    var showResults = 20;
+    var distance = sensor.slice(Math.max(sensor.length - showResults, 1));
+    var newTime = time.slice(Math.max(time.length - showResults, 1));
+    var distanceText = 'Distance from object in sensor';
+    var timetext = 'times'
     var lastDistance  = sensor.slice(-1);
     var lastSettingsRed  = settingsRed.slice(-1);
     var lastSettingsGreen  = settingsGreen.slice(-1);
 
-    console.log(lastSettingsRed);
+    distance.unshift(distanceText);
+    newTime.unshift(timetext);
 
-
-    newArr.unshift(text);
-
-    console.log(newArr);
+    console.log(distance);
+    console.log(newTime);
 
     var mainchart = c3.generate({
         data: {
             x: 'times',
             xFormat: '%Y-%m-%d %H:%M:%S',
             columns: [
-                newArr,
-                time
+                distance,
+                newTime
             ],
             type: 'area-step'
         },
