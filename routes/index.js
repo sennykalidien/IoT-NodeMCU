@@ -20,4 +20,19 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/settings', function(req, res, next) {
+  jsonfile.readFile('resources/data.json', function(err, obj) {
+    if (err) {
+        res.status(404);
+        next();
+    }
+
+    res.render('settings', {
+        title: 'Status leds',
+        description: 'On this page you can see the status of the leds',
+        data: getLastObject(obj)
+    });
+  });
+});
+
 module.exports = router;

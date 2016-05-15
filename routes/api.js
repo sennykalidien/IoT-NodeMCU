@@ -62,6 +62,15 @@ router.get('/status/output', function(req, res) {
     });
 });
 
+router.get('/status/settings', function(req, res) {
+    var name = req.params.input;
+    var file = 'resources/data.json';
+
+    jsonfile.readFile(file, function(err, obj) {
+        res.send('[{"red":"' + getLastObject(obj).settings.red + '"},{"green":"' + getLastObject(obj).settings.green + '"}]');
+    });
+});
+
 router.get('/data/', function(req, res) {
     var name = req.params.name;
     var file = 'resources/data.json';

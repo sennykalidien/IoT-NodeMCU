@@ -1,75 +1,32 @@
-<section class="chart">
-    <h2>Chart</h2>
+<section class="statusChart">
+    <h2>Today</h2>
     <div id="chart"></div>
 </section>
 
-<section class="leds">
-    <h2>Status</h2>
-    <div class="{{data.output.led}} status"></div>
-    <form action="/api" method="post">
-        <!-- <select name="output">
-            <option value="red">Time for a break!</option>
-            <option value="yellow">Almost time for a break...</option>
-            <option value="green">Let's be productive!</option>
-        </select> -->
-
-        <button name="output" value="red">Time for a break!</button>
-        <button name="output" value="yellow">Almost time for a break...</button>
-        <button name="output" value="green">Let's be productive!</button>
-    </form>
-
-    <form action="/api" method="post">
-        <!-- <fieldset>
-            <label>Red</label>
-            <select name="red">
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="200">200</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <label>Yellow</label>
-            <select name="yellow">
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="200">200</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <label>Green</label>
-            <select name="green">
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="200">200</option>
-            </select>
-        </fieldset> -->
-
-        <label for="child">Maximale afstand dat het gevaarlijk wordt voor je ogen</label><br />
-        <input name="red" type="range" min="0" max="70" value="{{data.settings.red}}" oninput="outputUpdateChild(value)" id="child">
-        <output for="child" id="child-out">{{data.settings.red}}</output><br />
-
-        <label for="adult">Minimale afstand dat het prima is voor je ogen</label><br />
-        <input name="green" type="range" min="80" max="200" value="{{data.settings.green}}" oninput="outputUpdateAdult(value)" id="adult">
-        <output for="adult" id="adult-out">{{data.settings.green}}</output><br />
-
-        <!--
-        <label for="grandpa">Grandpa Modus</label><br />
-        <input name="green" type="range" min="100" max="200" value="100" oninput="outputUpdateGrandpa(value)" id="grandpa">
-        <output for="grandpa" id="grandpa-out">20</output>
-        <br /><br />
-        -->
-        <button type="submit">Update</button>
-    </form>
+<section class="statusTime">
+    <h2>Last update</h2>
+    <p class="timeUpdated">{{data.time}}</p>
 </section>
 
-<section class="sensors">
-    <section>
-        <h2>Status ESP</h2>
-        <p>Time updated: {{data.time}}</p>
-        <p>Color led: {{data.output.led}}</p>
-        <p>Distance person: {{data.input.distance}} CM</p>
-    </section>
+
+<section class="statusOutput">
+    <h2>Status LED on board</h2>
+    <div class="{{data.output.led}} status"></div>
+</section>
+
+<section class="statusInput">
+    <h2>Current distance</h2>
+    <div id="pie"></div>
+</section>
+
+<section class="statusSettings">
+    <h2>Settings distance sensor</h2>
+    <div>
+        <h3>Max. distance danger zone</h3>
+        <p>{{data.settings.red}} cm</p>
+    </div>
+    <div>
+        <h3>Min. distance safety zone</h3>
+        <p>{{data.settings.green}} cm</p>
+    </div>
 </section>

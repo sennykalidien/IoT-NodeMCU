@@ -108,14 +108,16 @@ button {
     box-shadow: 0;
     outline: 0;
     border: 0;
-    background: #2980b9;
+    background: #34495e;
     padding: 0.7em;
     margin: 1em 0 0.5em;
     color: #f9f9f9;
     cursor: pointer;
-    border: 1em solid transparent;
-    background-clip: padding-box;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
+    box-shadow: 0 0 0 1px #f9f9f9 inset;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 :disabled,
@@ -164,7 +166,7 @@ h3,
 h4,
 h5 {
     color: #1e1e1e;
-    font-weight: normal;
+    font-weight: 300;
     clear: both;
 }
 
@@ -203,6 +205,16 @@ i {
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;
+}
+
+.red {
+    background: #e74c3c !important;
+}
+.yellow {
+    background: #f1c40f !important;
+}
+.green {
+    background: #2ecc71 !important;
 }
 
 

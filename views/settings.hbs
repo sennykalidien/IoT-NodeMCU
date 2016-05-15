@@ -1,0 +1,35 @@
+<section class="settingsOutput">
+    <header>
+        <h2>Settings LEDs</h2>
+    </header>
+    <form action="/api" method="post">
+        <button name="output" class="red" value="red">Danger!</button>
+        <button name="output" class="yellow" value="yellow">Be cautious</button>
+        <button name="output" class="green" value="green">Safe</button>
+    </form>
+</section>
+
+<section class="settingsInput">
+    <header>
+        <h2>Settings distance</h2>
+    </header>
+    <form action="/api" method="post">
+        <div>
+            <label for="child">Max. distance danger zone</label>
+            <br />
+            <input name="red" type="range" class="red" min="0" max="70" value="{{data.settings.red}}" oninput="outputUpdateChild(value)" id="child">
+            <output for="child" id="child-out">{{data.settings.red}}</output>
+            <br />
+        </div>
+
+        <div>
+            <label for="adult">Min. distance safety zone</label>
+            <br />
+            <input name="green" type="range" class="green" min="80" max="200" value="{{data.settings.green}}" oninput="outputUpdateAdult(value)" id="adult">
+            <output for="adult" id="adult-out">{{data.settings.green}}</output>
+            <br />
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+</section>
