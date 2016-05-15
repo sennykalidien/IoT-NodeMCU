@@ -23,20 +23,26 @@ d3.json("/api/data", function(error, data) {
         settingsGreen.push(element.settings.green);
     });
 
+    // How many results should be displayed?
     var showResults = 20;
+
+    // Re-define variables
     var distance = sensor.slice(Math.max(sensor.length - showResults, 1));
-    var newTime = time.slice(Math.max(time.length - showResults, 1));
+    var time = time.slice(Math.max(time.length - showResults, 1));
+    var lastDistance  = sensor.slice(-1);
+    var settingsRed  = settingsRed.slice(-1);
+    var settingsGreen  = settingsGreen.slice(-1);
+
     var distanceText = 'Distance from object in sensor';
     var timetext = 'times'
-    var lastDistance  = sensor.slice(-1);
-    var lastSettingsRed  = settingsRed.slice(-1);
-    var lastSettingsGreen  = settingsGreen.slice(-1);
+
+
 
     distance.unshift(distanceText);
-    newTime.unshift(timetext);
+    time.unshift(timetext);
 
     console.log(distance);
-    console.log(newTime);
+    console.log(time);
 
     var mainchart = c3.generate({
         data: {
@@ -44,7 +50,7 @@ d3.json("/api/data", function(error, data) {
             xFormat: '%Y-%m-%d %H:%M:%S',
             columns: [
                 distance,
-                newTime
+                time
             ],
             type: 'area-step'
         },
@@ -85,7 +91,7 @@ d3.json("/api/data", function(error, data) {
         threshold: {
             unit: 'value',
             max: 250, // 100 is default
-            values: [0, lastSettingsRed, lastSettingsGreen]
+            values: [0, settingsRed, settingsGreen]
         }
     },
     bindto: '#pie'
