@@ -12,10 +12,9 @@ body {
 }
 
 #header {
-    background: #34495e;
+    background: #f9f9f9;
     padding: 1em;
 	flex: 0 1 100%;
-	border-bottom: solid 2px #ececec;
 }
 
 #nav {
@@ -45,7 +44,7 @@ body {
 --------------------------------------------------------------*/
 #header h1 {
 	text-align: center;
-	color: #fff;
+	color: #2c3e50;
 }
 
 /*--------------------------------------------------------------
@@ -283,7 +282,7 @@ output:after {
 	#main {
 		width: 90%;
 		flex-flow: row wrap;
-		padding: 1em 0;
+		padding: 1.5em 0;
 	}
 
 	#main section.statusOutput {

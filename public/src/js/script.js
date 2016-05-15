@@ -66,7 +66,7 @@ d3.json("/api/data", function(error, data) {
                 show: true // to turn off the min/max labels.
         },
             min: 0, // 0 is default, //can handle negative min e.g. vacuum
-            max: 200, // 100 is default
+            max: 250, // 100 is default
             units: ' CM',
             width: 50 // for adjusting arc thickness
     },
@@ -74,7 +74,7 @@ d3.json("/api/data", function(error, data) {
         pattern: ['e74c3c', '#e74c3c', '#f1c40f', '#2ecc71'], // the three color levels for the percentage values.
         threshold: {
             unit: 'value',
-            max: 200, // 100 is default
+            max: 250, // 100 is default
             values: [0, 50, 70, 100]
         }
     },
