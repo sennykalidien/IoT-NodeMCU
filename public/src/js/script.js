@@ -11,7 +11,7 @@ function outputUpdateGrandpa(vol) {
 }
 
 d3.json("/api/data", function(error, data) {
-    var time = ['times'];
+    var time = ['Time'];
     var sensor = ['Distance from object to sensor'];
     var settingsRed = ['Settings for red LED'];
     var settingsGreen = ['Settings for green LED'];
@@ -34,10 +34,9 @@ d3.json("/api/data", function(error, data) {
     var settingsGreen  = settingsGreen.slice(-1);
 
     var distanceText = 'Distance from object in sensor';
-    var timetext = 'times'
+    var timetext = 'Time'
 
-
-
+    // Add text in the beginning of the array
     distance.unshift(distanceText);
     time.unshift(timetext);
 
@@ -46,7 +45,7 @@ d3.json("/api/data", function(error, data) {
 
     var mainchart = c3.generate({
         data: {
-            x: 'times',
+            x: 'Time',
             xFormat: '%Y-%m-%d %H:%M:%S',
             columns: [
                 distance,
