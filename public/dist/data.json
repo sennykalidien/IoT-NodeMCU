@@ -1,0 +1,23 @@
+[{
+    "time": "2016-04-13 15:46:30",
+    "lisa": {
+        "led": "true"
+    },
+    "senny": {
+        "led": "true"
+    },
+    "matthias": {
+        "led": "true"
+    }
+}, {
+    "time": "2016-04-13 15:47:22",
+    "lisa": {
+        "led": "true"
+    },
+    "senny": {
+        "led": "true"
+    },
+    "matthias": {
+        "led": "true"
+    }
+}]

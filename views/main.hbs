@@ -1,0 +1,32 @@
+<section class="statusChart">
+    <h2>Today</h2>
+    <div id="chart"></div>
+</section>
+
+<section class="statusTime">
+    <h2>Last update</h2>
+    <p class="timeUpdated">{{data.time}}</p>
+</section>
+
+
+<section class="statusOutput">
+    <h2>Code color</h2>
+    <div class="{{data.output.led}} status"></div>
+</section>
+
+<section class="statusInput">
+    <h2>Current distance</h2>
+    <div id="pie"></div>
+</section>
+
+<section class="statusSettings">
+    <h2>Settings distance sensor</h2>
+    <div>
+        <h3>Max. distance danger zone</h3>
+        <p>{{data.settings.red}} cm</p>
+    </div>
+    <div>
+        <h3>Min. distance safety zone</h3>
+        <p>{{data.settings.green}} cm</p>
+    </div>
+</section>
